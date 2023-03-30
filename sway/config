@@ -43,9 +43,9 @@ output * bg /usr/share/backgrounds/LTT_RGB_4K.png fill
 ### Idle configuration
 #
 # Example configuration:
-#
+# Password doesn't work
 exec swayidle -w \
-    timeout 300 'swaylock -f -c 000000' \
+    timeout 300 'swaylock' \
     timeout 600 'swaymsg "output * dpms off"' resume 'swaymsg "output * dpms on"' \
     before-sleep 'swaylock -f -c 000000'
 #
