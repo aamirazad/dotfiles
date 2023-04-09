@@ -1,7 +1,7 @@
 daemonize
 show-failed-attempts
 clock
-timestr=%I:%H %p
+timestr=%I:%M %p
 color=1f1d2e80
 font="Inter"
 indicator
@@ -34,7 +34,7 @@ datestr=%m.%d
 fade-in="0.2"
 ignore-empty-password
 
-screenshots
+#screenshots
 # clock
 # indicator
 # indicator-radius 100 
