@@ -1,0 +1,1 @@
+/home/aamira/.p10k.zsh
