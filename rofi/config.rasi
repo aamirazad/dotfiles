@@ -1,134 +1,135 @@
-// Config //
-configuration {
-    modi:                        "drun,filebrowser,window,run";
-    show-icons:                  true;
-    display-drun:                "";
-    display-run:                 "";
-    display-filebrowser:         "";
-    display-window:              "";
-    drun-display-format:         "{name}";
-    window-format:               "{w}{t}";
-    font:                        "JetBrainsMono Nerd Font 10";
-    icon-theme:                  "Tela-circle-dracula";
+@import "default"
+
+* {
+	bg: #191724;
+	cur: #1f1d2e;
+	fgd: #e0def4;
+	cmt: #6e6a86;
+	cya: #9ccfd8;
+	grn: #31748f;
+	ora: #ebbcba;
+	pur: #c4a7e7;
+	red: #eb6f92;
+	yel: #f6c177;
+
+	font: "Cartograph CF 12";
+
+	foreground: @fgd;
+	background: @bg;
+	active-background: @grn;
+	urgent-background: @red;
+
+	selected-background: @active-background;
+	selected-urgent-background: @urgent-background;
+	selected-active-background: @active-background;
+	separatorcolor: @active-background;
+	bordercolor: @ora;
 }
 
-@theme "~/.config/rofi/themes/theme.rasi"
-
-
-// Main //
-window {
-    height:                      590px;
-    width:                       1140px;
-    transparency:                "real";
-    fullscreen:                  false;
-    enabled:                     true;
-    cursor:                      "default";
-    spacing:                     0px;
-    padding:                     0px;
-    border:                      2px;
-    border-radius:               40px;
-    border-color:                @main-br;
-    background-color:            #26233ae6;
+#window {
+	background-color: @background;
+	border:           3;
+	border-radius:    6;
+	border-color:     @bordercolor;
+	padding:          5;
 }
-mainbox {
-    enabled:                     true;
-    spacing:                     0px;
-    orientation:                 horizontal;
-    children:                    [  "inputbar" , "listbox" ];
-    background-color:            transparent;
-    background-image:            url("~/.config/swww/wall.blur", height);
+#mainbox {
+	border:  0;
+	padding: 5;
 }
-
-
-// Inputs //
-inputbar {
-    enabled:                     true;
-    width:                       640px;
-    children:                    [ "mode-switcher" , "entry" ];
-    background-color:            transparent;
-    background-image:            url("~/.config/swww/wall.rofi", height);
+#message {
+	border:       1px dash 0px 0px ;
+	border-color: @separatorcolor;
+	padding:      1px ;
 }
-entry {
-    enabled:                     false;
+#textbox {
+	text-color: @foreground;
 }
-
-
-// Modes //
-mode-switcher{
-    orientation:                 vertical;
-    enabled:                     true;
-    spacing:                     0px;
-    width:                       68px;
-    padding:                     160px 10px 160px 10px;
-    spacing:                     25px;
-    background-color:            transparent;
-    background-image:            url("~/.config/swww/wall.blur", height);
+#listview {
+	fixed-height: 0;
+	border:       2px dash 0px 0px ;
+	border-color: @bordercolor;
+	spacing:      2px ;
+	scrollbar:    false;
+	padding:      2px 0px 0px ;
 }
-button {
-    cursor:                      pointer;
-    border-radius:               50px;
-    background-color:            @main-bg;
-    text-color:                  @main-fg;
+#element {
+	border:  0;
+	padding: 1px ;
 }
-button selected {
-    background-color:            @main-fg;
-    text-color:                  @main-bg;
+#element.normal.normal {
+	background-color: @background;
+	text-color:       @foreground;
 }
-
-
-// Lists //
-listbox {
-    spacing:                     10px;
-    padding:                     30px;
-    children:                    [ "listview" ];
-    background-color:            @main-bg;
+#element.normal.urgent {
+	background-color: @urgent-background;
+	text-color:       @urgent-foreground;
 }
-listview {
-    enabled:                     true;
-    columns:                     1;
-    cycle:                       true;
-    dynamic:                     true;
-    scrollbar:                   false;
-    layout:                      vertical;
-    reverse:                     false;
-    fixed-height:                true;
-    fixed-columns:               true;
-    cursor:                      "default";
-    background-color:            transparent;
-    text-color:                  @main-fg;
+#element.normal.active {
+	background-color: @active-background;
+	text-color:       @background;
 }
-
-
-// Elements //
-element {
-    enabled:                     true;
-    spacing:                     30px;
-    padding:                     8px;
-    border-radius:               20px;
-    cursor:                      pointer;
-    background-color:            transparent;
-    text-color:                  @main-fg;
+#element.selected.normal {
+	background-color: @selected-background;
+	text-color:       @foreground;
 }
-@media(max-aspect-ratio: 1.8) {
-    element {
-        orientation:             vertical;
-    }
+#element.selected.urgent {
+	background-color: @selected-urgent-background;
+	text-color:       @foreground;
 }
-element selected.normal {
-    background-color:            @select-bg;
-    text-color:                  @select-fg;
+#element.selected.active {
+	background-color: @selected-active-background;
+	text-color:       @background;
 }
-element-icon {
-    size:                        48px;
-    cursor:                      inherit;
-    background-color:            transparent;
-    text-color:                  inherit;
+#element.alternate.normal {
+	background-color: @background;
+	text-color:       @foreground;
 }
-element-text {
-    vertical-align:              0.5;
-    horizontal-align:            0.0;
-    cursor:                      inherit;
-    background-color:            transparent;
-    text-color:                  inherit;
+#element.alternate.urgent {
+	background-color: @urgent-background;
+	text-color:       @foreground;
 }
-
+#element.alternate.active {
+	background-color: @active-background;
+	text-color:       @foreground;
+}
+#scrollbar {
+	width:        2px ;
+	border:       0;
+	handle-width: 8px ;
+	padding:      0;
+}
+#sidebar {
+	border:       2px dash 0px 0px ;
+	border-color: @separatorcolor;
+}
+#button.selected {
+	background-color: @selected-background;
+	text-color:       @foreground;
+}
+#inputbar {
+	spacing:    0;
+	text-color: @foreground;
+	padding:    1px ;
+}
+#case-indicator {
+	spacing:    0;
+	text-color: @foreground;
+}
+#entry {
+	spacing:    0;
+	text-color: @cya;
+}
+#prompt {
+	spacing:    0;
+	text-color: @grn;
+}
+#inputbar {
+	children:   [ prompt,textbox-prompt-colon,entry,case-indicator ];
+}
+#textbox-prompt-colon {
+	expand:     false;
+	str:        ":";
+	margin:     0px 0.3em 0em 0em;
+	text-color: @grn;
+}
