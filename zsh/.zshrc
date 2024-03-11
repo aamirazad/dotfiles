@@ -12,8 +12,14 @@ ZSH=/home/aamira/.oh-my-zsh
 source ~/powerlevel10k/powerlevel10k.zsh-theme
 
 # List of plugins used
-plugins=()
+plugins=(
+    zsh-autosuggestions
+)
 source $ZSH/oh-my-zsh.sh
+
+# Zsh autosuggest
+ZSH_AUTOSUGGEST_STRATEGY=(history completion)
+bindkey '^o' forward-word
 
 # # In case a command is not found, try to find the package that has it
 # function command_not_found_handler {
@@ -137,3 +143,14 @@ optimg() {
 
 
 export PATH=$PATH:/usr/local/go/bin
+
+# Jonny desimal command line
+
+cdj() {
+
+  # Update with your document root folder
+  pushd ~/Vault/*/*/${1}*
+
+}
+
+export cdj
