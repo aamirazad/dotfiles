@@ -59,7 +59,7 @@ alias ld='eza -lhD --icons=auto' # long list dirs
 # ██║  ██║███████╗██║██║  ██║███████║███████╗███████║
 # ╚═╝  ╚═╝╚══════╝╚═╝╚═╝  ╚═╝╚══════╝╚══════╝╚══════╝                                         
 
-alias ssh="kitten ssh"
+#alias ssh="kitten ssh"
 alias cp='cp -i'
 alias mv='mv -i'
 alias rm='trash -v'
