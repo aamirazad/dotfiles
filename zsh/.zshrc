@@ -92,6 +92,10 @@ fi
 
 alias fahcontrol="python2 /usr/bin/FAHControl"
 
+## Gh copilot cli
+
+echo 'eval "$(gh copilot alias -- zsh)"' >> ~/.zshrc
+
 
 # ███████╗███╗   ██╗██╗   ██╗
 # ██╔════╝████╗  ██║██║   ██║
@@ -154,3 +158,27 @@ cdj() {
 }
 
 export cdj
+eval "$(gh copilot alias -- zsh)"
+eval "$(gh copilot alias -- zsh)"
+eval "$(gh copilot alias -- zsh)"
+eval "$(gh copilot alias -- zsh)"
+eval "$(gh copilot alias -- zsh)"
+eval "$(gh copilot alias -- zsh)"
+eval "$(gh copilot alias -- zsh)"
+eval "$(gh copilot alias -- zsh)"
+eval "$(gh copilot alias -- zsh)"
+eval "$(gh copilot alias -- zsh)"
+eval "$(gh copilot alias -- zsh)"
+eval "$(gh copilot alias -- zsh)"
+eval "$(gh copilot alias -- zsh)"
+eval "$(gh copilot alias -- zsh)"
+eval "$(gh copilot alias -- zsh)"
+eval "$(gh copilot alias -- zsh)"
+eval "$(gh copilot alias -- zsh)"
+eval "$(gh copilot alias -- zsh)"
+eval "$(gh copilot alias -- zsh)"
+eval "$(gh copilot alias -- zsh)"
+eval "$(gh copilot alias -- zsh)"
+eval "$(gh copilot alias -- zsh)"
+eval "$(gh copilot alias -- zsh)"
+eval "$(gh copilot alias -- zsh)"
