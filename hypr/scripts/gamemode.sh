@@ -1,6 +1,7 @@
 #!/usr/bin/env sh
-HYPRGAMEMODE=$(hyprctl getoption animations:enabled | sed -n '2p' | awk '{print $2}')
-if [ $HYPRGAMEMODE = 1 ] ; then
+HYPRGAMEMODE=$(hyprctl getoption animations:enabled | awk 'NR==1{print $2}')
+if [ "$HYPRGAMEMODE" = 1 ] ; then
+    notify-send "Game Mode" "Game Mode is now enabled" --icon=dialog-information
     hyprctl --batch "\
         keyword animations:enabled 0;\
         keyword decoration:drop_shadow 0;\
@@ -11,4 +12,5 @@ if [ $HYPRGAMEMODE = 1 ] ; then
         keyword decoration:rounding 0"
     exit
 fi
+notify-send "Game Mode" "Game Mode is now disabled" --icon=dialog-information
 hyprctl reload

@@ -18,7 +18,7 @@ plugins=(
 source $ZSH/oh-my-zsh.sh
 
 # Zsh autosuggest
-ZSH_AUTOSUGGEST_STRATEGY=(history completion)
+ZSH_AUTOSUGGEST_STRATEGY=(completion history)
 bindkey '^o' forward-word
 
 # # In case a command is not found, try to find the package that has it
@@ -43,7 +43,7 @@ bindkey '^o' forward-word
 
 # Helpful aliases
 alias  l='eza -lh  --icons=auto' # long list
-alias ls='eza -1   --icons=auto' # short list
+alias ls='eza --icons=auto' # short list
 alias ll='eza -lha --icons=auto --sort=name --group-directories-first' # long list all
 alias ld='eza -lhD --icons=auto' # long list dirs
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
@@ -78,23 +78,23 @@ eval "`fnm env`"
 export BUN_INSTALL="$HOME/.bun"
 export PATH=$BUN_INSTALL/bin:$PATH
 
-#Autojump
-
-if [ -f "/usr/share/autojump/autojump.sh" ]; then
-	. /usr/share/autojump/autojump.sh
-elif [ -f "/usr/share/autojump/autojump.bash" ]; then
-	. /usr/share/autojump/autojump.bash
-else
-	echo "can't found the autojump script"
-fi
-
 # Fahcontrol
 
 alias fahcontrol="python2 /usr/bin/FAHControl"
 
 ## Gh copilot cli
+eval "$(gh copilot alias -- zsh)"
 
-echo 'eval "$(gh copilot alias -- zsh)"' >> ~/.zshrc
+## Clickpaste
+
+clickpaste()
+{
+    if [ $# -eq 0 ]; then
+        sleep 4; xclip -o -selection clipboard | tr "\n" "\r" | xdotool type --clearmodifiers --delay 500 --file -
+    else
+        sleep "${1}"; xclip -o -selection clipboard | tr "\n" "\r" | xdotool type --clearmodifiers --delay "${2}" --file -
+    fi
+}
 
 
 # ███████╗███╗   ██╗██╗   ██╗
@@ -158,27 +158,31 @@ cdj() {
 }
 
 export cdj
-eval "$(gh copilot alias -- zsh)"
-eval "$(gh copilot alias -- zsh)"
-eval "$(gh copilot alias -- zsh)"
-eval "$(gh copilot alias -- zsh)"
-eval "$(gh copilot alias -- zsh)"
-eval "$(gh copilot alias -- zsh)"
-eval "$(gh copilot alias -- zsh)"
-eval "$(gh copilot alias -- zsh)"
-eval "$(gh copilot alias -- zsh)"
-eval "$(gh copilot alias -- zsh)"
-eval "$(gh copilot alias -- zsh)"
-eval "$(gh copilot alias -- zsh)"
-eval "$(gh copilot alias -- zsh)"
-eval "$(gh copilot alias -- zsh)"
-eval "$(gh copilot alias -- zsh)"
-eval "$(gh copilot alias -- zsh)"
-eval "$(gh copilot alias -- zsh)"
-eval "$(gh copilot alias -- zsh)"
-eval "$(gh copilot alias -- zsh)"
-eval "$(gh copilot alias -- zsh)"
-eval "$(gh copilot alias -- zsh)"
-eval "$(gh copilot alias -- zsh)"
-eval "$(gh copilot alias -- zsh)"
-eval "$(gh copilot alias -- zsh)"
+
+# zoxide
+
+eval "$(zoxide init --cmd cd zsh)"
+
+# ranger
+
+alias ranger='ranger --choosedir=$HOME/.rangerdir; LASTDIR=`cat $HOME/.rangerdir`; cd "$LASTDIR"'
+
+# pyenv
+
+export PYENV_ROOT="$HOME/.pyenv"
+[[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init -)"
+
+# poetry
+
+export PATH="/home/aamira/.local/bin:$PATH"
+
+# bun completions
+[ -s "/home/aamira/.bun/_bun" ] && source "/home/aamira/.bun/_bun"
+
+# fnm
+FNM_PATH="/home/aamira/.fnm"
+if [ -d "$FNM_PATH" ]; then
+  export PATH="/home/aamira/.fnm:$PATH"
+  eval "`fnm env`"
+fi
