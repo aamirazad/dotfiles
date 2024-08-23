@@ -22,3 +22,10 @@ alias update-system="sudo dnf update rpmfusion-nonfree-release rpmfusion-free-re
 # # bun
 # export BUN_INSTALL="$HOME/.bun"
 # export PATH=$BUN_INSTALL/bin:$PATH
+
+# homebrew
+eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+
+# bun
+set --export BUN_INSTALL "$HOME/.bun"
+set --export PATH $BUN_INSTALL/bin $PATH

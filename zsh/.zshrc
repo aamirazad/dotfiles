@@ -186,3 +186,5 @@ if [ -d "$FNM_PATH" ]; then
   export PATH="/home/aamira/.fnm:$PATH"
   eval "`fnm env`"
 fi
+
+export PATH=$PATH:/home/aamira/.local/bin
