@@ -1,77 +1,45 @@
-# Colors section of "Alacritty - TOML configuration file format"
-# https://github.com/alacritty/alacritty/blob/master/extra/man/alacritty.5.scd#colors
+live_config_reload = true
+working_directory = "None"
 
-[colors.primary]
-foreground = "#e0def4"
-background = "#191724"
-dim_foreground = "#908caa"
-bright_foreground = "#e0def4"
+# Themes --
+import = [ 
+  "~/.config/alacritty/nordic.toml",
+  "~/.config/alacritty/keybinds.toml"
+]
 
-[colors.cursor]
-text = "#e0def4"
-cursor = "#524f67"
+[window]
+title = "Alacritty"
+decorations = "none"
+blur = true
+opacity = 0.9
+padding.x = 10
+padding.y = 10
 
-[colors.vi_mode_cursor]
-text = "#e0def4"
-cursor = "#524f67"
+[window.dimensions]
+columns = 160
+lines = 80
 
-[colors.search.matches]
-foreground = "#908caa"
-background = "#26233a"
+[cursor.style]
+shape= "Beam"
+blinking = "Never"
 
-[colors.search.focused_match]
-foreground = "#191724"
-background = "#ebbcba"
+[colors]
+#transparent_background_colors = true
+draw_bold_text_with_bright_colors = true
 
-[colors.hints.start]
-foreground = "#908caa"
-background = "#1f1d2e"
-
-[colors.hints.end]
-foreground = "#6e6a86"
-background = "#1f1d2e"
-
-[colors.line_indicator]
-foreground = "None"
-background = "None"
-
-[colors.footer_bar]
-foreground = "#e0def4"
-background = "#1f1d2e"
-
-[colors.selection]
-text = "#e0def4"
-background = "#403d52"
-
-[colors.normal]
-black = "#26233a"
-red = "#eb6f92"
-green = "#31748f"
-yellow = "#f6c177"
-blue = "#9ccfd8"
-magenta = "#c4a7e7"
-cyan = "#ebbcba"
-white = "#e0def4"
-
-[colors.bright]
-black = "#6e6a86"
-red = "#eb6f92"
-green = "#31748f"
-yellow = "#f6c177"
-blue = "#9ccfd8"
-magenta = "#c4a7e7"
-cyan = "#ebbcba"
-white = "#e0def4"
-
-[colors.dim]
-black = "#6e6a86"
-red = "#eb6f92"
-green = "#31748f"
-yellow = "#f6c177"
-blue = "#9ccfd8"
-magenta = "#c4a7e7"
-cyan = "#ebbcba"
-white = "#e0def4"
+[env]
+TERM = "xterm-256color"
 
 [font]
-normal = {family = "MonaspiceNe Nerd Font Mono", style = "Regular"}
+#glyph_offset = { x = 1, y = 0 }
+normal.family = "MesloLGS Nerd Font Mono"
+normal.style = "Regular"
+size = 16.0
+
+[font.bold]
+family = "MesloLGS Nerd Font Mono"
+style = "Bold"
+
+[font.italic]
+family = "MesloLGS Nerd Font Mono"
+style = "Italic"

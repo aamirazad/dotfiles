@@ -188,3 +188,7 @@ if [ -d "$FNM_PATH" ]; then
 fi
 
 export PATH=$PATH:/home/aamira/.local/bin
+
+. "$HOME/.atuin/bin/env"
+
+eval "$(atuin init zsh)"
