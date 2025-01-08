@@ -23,7 +23,7 @@ key_path = "~/Sync/Keys/Atuin-key"
 # timezone = "local"
 
 ## enable or disable automatic sync
-# auto_sync = true
+auto_sync = true
 
 ## enable or disable automatic update checks
 # update_check = true
@@ -230,3 +230,6 @@ records = true
 
 ## The port that should be used for TCP on non unix systems
 # tcp_port = 8889
+
+[dotfiles]
+enabled = true

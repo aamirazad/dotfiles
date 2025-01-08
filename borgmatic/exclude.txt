@@ -1,0 +1,16 @@
+*/tmp/
+*.cache/
+/home/aamir/.local/share
+/home/aamir/.minecraft/
+/home/aamir/.mozilla/
+/home/aamir/.cargo/
+/home/aamir/.rustup/
+/home/aamir/code/
+/home/aamir/.bun/
+/home/aamir/.steam*
+/home/aamir/.npm/
+*/node_modules/
+*/.git/
+*/.obsidian/plugins
+/home/aamir/.var/app/
+/home/linuxbrew/
