@@ -1,30 +1,33 @@
 # .bashrc
 
 # User specific environment
-if ! [[ "$PATH" =~ "$HOME/.local/bin:$HOME/bin:" ]]; then
-    PATH="$HOME/.local/bin:$HOME/bin:$PATH"
-fi
-export PATH
+#if ! [[ "$PATH" =~ "$HOME/.local/bin:$HOME/bin:" ]]; then
+#    PATH="$HOME/.local/bin:$HOME/bin:$PATH"
+#fi
+#export PATH
 
 # Enable bash programmable completion features in interactive shells
-if [ -f /usr/share/bash-completion/bash_completion ]; then
-	. /usr/share/bash-completion/bash_completion
-elif [ -f /etc/bash_completion ]; then
-	. /etc/bash_completion
-fi
+#if [ -f /usr/share/bash-completion/bash_completion ]; then
+#	. /usr/share/bash-completion/bash_completion
+#elif [ -f /etc/bash_completion ]; then
+#	. /etc/bash_completion
+#fi
 
 # Uncomment the following line if you don't like systemctl's auto-paging feature:
 # export SYSTEMD_PAGER=
 
 # User specific aliases and functions
-if [ -d ~/.bashrc.d ]; then
-    for rc in ~/.bashrc.d/*; do
-        if [ -f "$rc" ]; then
-            . "$rc"
-        fi
-    done
-fi
-unset rc
+#if [ -d ~/.bashrc.d ]; then
+#    for rc in ~/.bashrc.d/*; do
+#        if [ -f "$rc" ]; then
+#            . "$rc"
+#        fi
+#    done
+#fi
+#unset rc
+
+# ble.sh start
+[[ $- == *i* ]] && source ~/.local/share/blesh/ble.sh --noattach
 
 # Homebrew
 eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
@@ -241,8 +244,6 @@ eval "$(/home/linuxbrew/.linuxbrew/bin/zoxide init bash --cmd cd)"
 # Fnm
 eval "$(fnm env --use-on-cd --shell bash)"
 
-source ~/.local/share/blesh/ble.sh
-
 # Atuin
 eval "$(/home/linuxbrew/.linuxbrew/bin/atuin init bash)"
 
@@ -264,5 +265,34 @@ alias rn="trash"
 alias trash-list="trash list | fzf --multi | awk '{$1=$1;print}' | rev | cut -d ' ' -f1 | rev | xargs trash restore --match=exact --force"
 eval "$(uv generate-shell-completion bash)"
 eval "$(uvx --generate-shell-completion bash)"
+
+export GPG_TTY=$(tty)
+
+# vim to nvim
+alias vim="nvim"
+
+# GPG SSH
+
+unset SSH_AGENT_PID
+if [ "${gnupg_SSH_AUTH_SOCK_by:-0}" -ne $$ ]; then
+  export SSH_AUTH_SOCK="$(gpgconf --list-dirs agent-ssh-socket)"
+fi
+export GPG_TTY=$(tty)
+gpg-connect-agent updatestartuptty /bye >/dev/null
+
+# Kitten (kitty)
+alias ssh="kitten ssh"
+
+# mutt
+alias nmutt="neomutt"
+
+# go
+export PATH="$PATH:$HOME/go/bin"
+
+# ble.sh end
+[[ ! ${BLE_VERSION-} ]] || ble-attach
+
+# gpg
+[ -f ~/.bashrc ] && echo -e '\nexport GPG_TTY=$(tty)' >> ~/.bashrc
 
 export GPG_TTY=$(tty)

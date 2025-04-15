@@ -1,0 +1,18 @@
+[/home/aamir/.local/share/plasma-vault/PGP.enc]
+activities=
+backend=cryfs
+lastError=Unknown device (code: 1)
+lastStatus=2
+mountPoint=/home/aamir/Vaults/PGP
+name=PGP
+offlineOnly=true
+
+[/home/aamir/.local/share/plasma-vault/Secrets.enc]
+lastStatus=254
+
+[EncryptedDevices]
+/home/aamir/.local/share/plasma-vault/PGP.enc=true
+
+[UI-notice]
+SkipNotice-cryfs-message=false
+SkipNotice-encfs-message=false
