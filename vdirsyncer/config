@@ -1,0 +1,21 @@
+[general]
+status_path = "~/.config/vdirsyncer/status/"
+
+# Personal Contacts
+[pair personal_addressbook]
+a = "personal_addressbook_local"
+b = "personal_addressbook_remote"
+collections = ["from a", "from b"]
+metadata = ["displayname"]
+
+[storage personal_addressbook_local]
+type = "filesystem"
+path = "~/address/personal"
+fileext = ".vcf"
+
+[storage personal_addressbook_remote]
+type = "carddav"
+auth = "basic"
+url = "https://www.googleapis.com/carddav/v1/principals/aamirmazad@gmail.com/lists"
+username = "aamirmazad@gmail.com"
+password.fetch = ["command", "pass", "google"]

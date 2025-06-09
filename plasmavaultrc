@@ -5,7 +5,7 @@ lastError=Unknown device (code: 1)
 lastStatus=2
 mountPoint=/home/aamir/Vaults/PGP
 name=PGP
-offlineOnly=true
+offlineOnly=false
 
 [/home/aamir/.local/share/plasma-vault/Secrets.enc]
 lastStatus=254

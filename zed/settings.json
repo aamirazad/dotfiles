@@ -43,7 +43,7 @@
     "font_family": "FiraCode Nerd Font Mono",
     "default_height": 300
   },
-  "assistant": {
+  "agent": {
     "enabled": false,
     "version": "2"
   },

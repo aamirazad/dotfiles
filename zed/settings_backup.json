@@ -7,13 +7,16 @@
 // custom settings, run `zed: open default settings` from the
 // command palette (cmd-shift-p / ctrl-shift-p)
 {
-  "inline_completions": {
+  "features": {
+    "edit_prediction_provider": "zed"
+  },
+  "edit_predictions": {
     "disabled_globs": [".env"]
   },
   "theme": {
     "mode": "dark",
     "light": "One Light",
-    "dark": "Rosé Pine"
+    "dark": "One Dark"
   },
   // "features": {
   //   "inline_completion_provider": "supermaven"
@@ -52,7 +55,7 @@
   },
   "show_call_status_icon": false,
   "chat_panel": {
-    "button": false
+    "button": "never"
   },
   "notification_panel": {
     "button": false

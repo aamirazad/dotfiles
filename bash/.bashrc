@@ -252,12 +252,6 @@ gcom() {
 	git add .
 	git commit -m "$1"
 }
-lazyg() {
-	git add .
-	git commit -m "$1"
-	git push
-}
-. "$HOME/.cargo/env"
 
 # no more rm (unsafe)
 alias rm="echo 'use rn'"
@@ -266,19 +260,17 @@ alias trash-list="trash list | fzf --multi | awk '{$1=$1;print}' | rev | cut -d 
 eval "$(uv generate-shell-completion bash)"
 eval "$(uvx --generate-shell-completion bash)"
 
-export GPG_TTY=$(tty)
-
 # vim to nvim
 alias vim="nvim"
 
 # GPG SSH
 
-unset SSH_AGENT_PID
-if [ "${gnupg_SSH_AUTH_SOCK_by:-0}" -ne $$ ]; then
-  export SSH_AUTH_SOCK="$(gpgconf --list-dirs agent-ssh-socket)"
-fi
-export GPG_TTY=$(tty)
-gpg-connect-agent updatestartuptty /bye >/dev/null
+# unset SSH_AGENT_PID
+# if [ "${gnupg_SSH_AUTH_SOCK_by:-0}" -ne $$ ]; then
+#   export SSH_AUTH_SOCK="$(gpgconf --list-dirs agent-ssh-socket)"
+# fi
+# export GPG_TTY=$(tty)
+# gpg-connect-agent updatestartuptty /bye >/dev/null
 
 # Kitten (kitty)
 alias ssh="kitten ssh"
@@ -289,10 +281,44 @@ alias nmutt="neomutt"
 # go
 export PATH="$PATH:$HOME/go/bin"
 
+hashsign() {
+    if [[ -z "$1" ]]; then
+        echo "Usage: shasign <file>"
+        return 1
+    fi
+
+    local filename="$1"
+    local signature_file="$filename.sha256"
+    local signed_file="$filename.sha256.sig"
+
+    if [[ ! -f "$filename" ]]; then
+        echo "Error: File '$filename' not found."
+        return 1
+    fi
+
+    echo "Generating SHA256 checksum for '$filename'..."
+    if ! sha256sum "$filename" > "$signature_file"; then
+        echo "Error: Failed to generate SHA256 checksum."
+        return 1
+    fi
+
+    echo "Signing '$signature_file'..."
+    if ! gpg --clearsign --yes --out "$signed_file" --local-user "aamirmazad@gmail.com" "$signature_file"; then
+        echo "Error: Failed to sign the checksum file."
+        # Optionally remove the unsigned checksum file on failure
+        # rm -f "$signature_file"
+        return 1
+    fi
+    rn -f "$signature_file"
+    
+    echo "Successfully generated and inline signed '$signed_file'."
+}
+
+# pyenv
+export PYENV_ROOT="$HOME/.pyenv"
+[[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init - bash)"
+
 # ble.sh end
 [[ ! ${BLE_VERSION-} ]] || ble-attach
 
-# gpg
-[ -f ~/.bashrc ] && echo -e '\nexport GPG_TTY=$(tty)' >> ~/.bashrc
-
-export GPG_TTY=$(tty)
