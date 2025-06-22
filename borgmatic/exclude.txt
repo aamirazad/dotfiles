@@ -15,3 +15,4 @@
 /home/aamir/.var/app/
 /home/linuxbrew/
 /home/aamir/.config/thorium/
+/home/aamir/nobackup/

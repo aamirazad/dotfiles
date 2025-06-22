@@ -7,57 +7,59 @@
 // custom settings, run `zed: open default settings` from the
 // command palette (cmd-shift-p / ctrl-shift-p)
 {
-  "features": {
-    "edit_prediction_provider": "zed"
-  },
-  "edit_predictions": {
-    "disabled_globs": [".env"]
-  },
-  "theme": {
-    "mode": "dark",
-    "light": "One Light",
-    "dark": "One Dark"
-  },
-  // "features": {
-  //   "inline_completion_provider": "supermaven"
-  // },
-  "format_on_save": "on",
-  "tab_size": 2,
-  // "buffer_font_family": "MonaspiceNe Nerd Font Mono",
-  // "buffer_font_weight": 100,
-  // "buffer_font_features": {
-  //   "calt": true,
-  //   "liga": true,
-  //   "ss01": true,
-  //   "ss02": true,
-  //   "ss03": true,
-  //   "ss04": true,
-  //   "ss05": true,
-  //   "ss06": true,
-  //   "ss07": true,
-  //   "ss08": true,
-  //   "ss09": true
-  // },
-  "buffer_font_family": "FiraCode Nerd Font Mono",
-  "terminal": {
-    "font_family": "FiraCode Nerd Font Mono",
-    "default_height": 300
-  },
-  "agent": {
-    "enabled": false,
-    "version": "2"
-  },
-  "outline_panel": {
-    "button": false
-  },
-  "collaboration_panel": {
-    "button": false
-  },
-  "show_call_status_icon": false,
-  "chat_panel": {
-    "button": "never"
-  },
-  "notification_panel": {
-    "button": false
-  }
+    "features": {
+        "edit_prediction_provider": "none"
+    },
+    "edit_predictions": {
+        "disabled_globs": [
+            ".env"
+        ]
+    },
+    "theme": {
+        "mode": "dark",
+        "light": "One Light",
+        "dark": "One Dark"
+    },
+    // "features": {
+    //   "inline_completion_provider": "supermaven"
+    // },
+    "format_on_save": "on",
+    "tab_size": 4,
+    // "buffer_font_family": "MonaspiceNe Nerd Font Mono",
+    // "buffer_font_weight": 100,
+    // "buffer_font_features": {
+    //   "calt": true,
+    //   "liga": true,
+    //   "ss01": true,
+    //   "ss02": true,
+    //   "ss03": true,
+    //   "ss04": true,
+    //   "ss05": true,
+    //   "ss06": true,
+    //   "ss07": true,
+    //   "ss08": true,
+    //   "ss09": true
+    // },
+    "buffer_font_family": "FiraCode Nerd Font Mono",
+    "terminal": {
+        "font_family": "FiraCode Nerd Font Mono",
+        "default_height": 300
+    },
+    "agent": {
+        "enabled": false,
+        "version": "2"
+    },
+    "outline_panel": {
+        "button": false
+    },
+    "collaboration_panel": {
+        "button": false
+    },
+    "show_call_status_icon": false,
+    "chat_panel": {
+        "button": "never"
+    },
+    "notification_panel": {
+        "button": false
+    }
 }

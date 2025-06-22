@@ -322,3 +322,18 @@ eval "$(pyenv init - bash)"
 # ble.sh end
 [[ ! ${BLE_VERSION-} ]] || ble-attach
 
+# push and delete branch
+
+gohome() {
+  local prev_branch=$(git symbolic-ref --short HEAD) # Get the current branch before switching
+  git checkout main && \
+  git pull && \
+  if [ "$prev_branch" != "main" ]; then # Only try to delete if not already on main
+    git branch -d "$prev_branch"
+  fi
+}
+
+#flyctl
+
+export FLYCTL_INSTALL="/home/aamir/.fly"
+export PATH="$FLYCTL_INSTALL/bin:$PATH"
