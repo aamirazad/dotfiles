@@ -337,3 +337,12 @@ gohome() {
 
 export FLYCTL_INSTALL="/home/aamir/.fly"
 export PATH="$FLYCTL_INSTALL/bin:$PATH"
+
+# whisper subtitles
+# tbd
+#
+# for file in /path/to/your/audio_files/*.mp3; do
+#     echo "Processing $file..."
+#     whisper "$file" --model base --language en --output_format srt
+#     echo "Finished processing $file"
+# done
