@@ -8,7 +8,7 @@
 // command palette (cmd-shift-p / ctrl-shift-p)
 {
   "features": {
-    "edit_prediction_provider": "zed"
+    "edit_prediction_provider": "none"
   },
   "edit_predictions": {
     "disabled_globs": [".env"]
@@ -20,7 +20,6 @@
   },
   // "features": {
   //   "inline_completion_provider": "supermaven"
-  // },
   "format_on_save": "on",
   "tab_size": 2,
   // "buffer_font_family": "MonaspiceNe Nerd Font Mono",
@@ -43,8 +42,8 @@
     "font_family": "FiraCode Nerd Font Mono",
     "default_height": 300
   },
-  "assistant": {
-    "enabled": false,
+  "agent": {
+    "enabled": true,
     "version": "2"
   },
   "outline_panel": {

@@ -27,7 +27,7 @@
 #unset rc
 
 # ble.sh start
-[[ $- == *i* ]] && source ~/.local/share/blesh/ble.sh --noattach
+# [[ $- == *i* ]] && source ~/.local/share/blesh/ble.sh --noattach
 
 # Homebrew
 eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
@@ -48,10 +48,10 @@ PROMPT_COMMAND='history -a'
 
 # Ignore case on auto-completion
 # Note: bind used instead of sticking these in .inputrc
-if [[ $iatest -gt 0 ]]; then bind "set completion-ignore-case on"; fi
+#if [[ $iatest -gt 0 ]]; then bind "set completion-ignore-case on"; fi
 
 # Show auto-completion list automatically, without double tab
-if [[ $iatest -gt 0 ]]; then bind "set show-all-if-ambiguous On"; fi
+#if [[ $iatest -gt 0 ]]; then bind "set show-all-if-ambiguous On"; fi
 
 # Set the default editor
 export EDITOR=nvim
@@ -77,20 +77,20 @@ alias cat='bat'
 alias rmd='/bin/rm  --recursive --force --verbose '
 
 # Alias's for multiple directory listing commands
-alias la='ls -Alh' # show hidden files
-alias ls='ls -aFh --color=always' # add colors and file type extensions
-alias lx='ls -lXBh' # sort by extension
-alias lk='ls -lSrh' # sort by size
-alias lc='ls -lcrh' # sort by change time
-alias lu='ls -lurh' # sort by access time
-alias lr='ls -lRh' # recursive ls
-alias lt='ls -ltrh' # sort by date
-alias lm='ls -alh |more' # pipe through 'more'
-alias lw='ls -xAh' # wide listing format
-alias ll='ls -Fls' # long listing format
-alias labc='ls -lap' #alphabetical sort
-alias lf="ls -l | egrep -v '^d'" # files only
-alias ldir="ls -l | egrep '^d'" # directories only
+alias la='eza -Alh' # show hidden files
+alias ls='eza -a' # add colors and file type extensions
+alias lx='eza -lXBh' # sort by extension
+alias lk='eza -lSrh' # sort by size
+alias lc='eza -lcrh' # sort by change time
+alias lu='eza -lurh' # sort by access time
+alias lr='eza -lRh' # recursive ls
+alias lt='eza -ltrh' # sort by date
+alias lm='eza -alh |more' # pipe through 'more'
+alias lw='eza -xAh' # wide listing format
+alias ll='eza -Fls' # long listing format
+alias labc='eza -lap' #alphabetical sort
+alias lf="eza -l | egrep -v '^d'" # files only
+alias ldir="eza -l | egrep '^d'" # directories only
 
 # alias chmod commands
 alias mx='chmod a+x'
@@ -239,13 +239,14 @@ alias whatismyip="hostname -I"
 eval "$(/home/linuxbrew/.linuxbrew/bin/starship init bash)"
 
 # Zoxide
+export _ZO_DOCTOR=0
 eval "$(/home/linuxbrew/.linuxbrew/bin/zoxide init bash --cmd cd)"
 
 # Fnm
 eval "$(fnm env --use-on-cd --shell bash)"
 
 # Atuin
-eval "$(/home/linuxbrew/.linuxbrew/bin/atuin init bash)"
+#eval "$(/home/linuxbrew/.linuxbrew/bin/atuin init bash)"
 
 # Lazy git
 gcom() {
@@ -254,8 +255,7 @@ gcom() {
 }
 
 # no more rm (unsafe)
-alias rm="echo 'use rn'"
-alias rn="trash"
+alias rm="trash"
 alias trash-list="trash list | fzf --multi | awk '{$1=$1;print}' | rev | cut -d ' ' -f1 | rev | xargs trash restore --match=exact --force"
 eval "$(uv generate-shell-completion bash)"
 eval "$(uvx --generate-shell-completion bash)"
@@ -310,7 +310,7 @@ hashsign() {
         return 1
     fi
     rn -f "$signature_file"
-    
+
     echo "Successfully generated and inline signed '$signed_file'."
 }
 
@@ -320,7 +320,7 @@ export PYENV_ROOT="$HOME/.pyenv"
 eval "$(pyenv init - bash)"
 
 # ble.sh end
-[[ ! ${BLE_VERSION-} ]] || ble-attach
+# [[ ! ${BLE_VERSION-} ]] || ble-attach
 
 # push and delete branch
 
@@ -338,11 +338,35 @@ gohome() {
 export FLYCTL_INSTALL="/home/aamir/.fly"
 export PATH="$FLYCTL_INSTALL/bin:$PATH"
 
-# whisper subtitles
-# tbd
-#
-# for file in /path/to/your/audio_files/*.mp3; do
-#     echo "Processing $file..."
-#     whisper "$file" --model base --language en --output_format srt
-#     echo "Finished processing $file"
-# done
+# fzf in file
+fif() {
+  if [ ! "$#" -gt 0 ]; then echo "Need a string to search for\!"; return 1; fi
+  rg --files-with-matches --no-messages "$1" | fzf --preview "highlight -O ansi -l {} 2> /dev/null | rg --colors 'match:bg:yellow' --ignore-case --pretty --context 10 '$1' || rg --ignore-case --pretty --context 10 '$1' {}"
+}
+. "$HOME/.cargo/env"
+
+# opencode
+export PATH=/home/aamir/.opencode/bin:$PATH
+
+# terminal-wakatime setup
+# export PATH="$HOME/.wakatime:$PATH"
+
+#eval "$(terminal-wakatime init)"
+
+# commit-and-sync
+commit-and-sync() {
+  git add .
+  git commit -m "$(hostname): $(date +"%Y-%m-%d %H:%M:%S")"
+  git push
+}
+
+# Amp CLI
+export PATH="/home/aamir/.amp/bin:$PATH"
+
+# Java
+export JAVA_HOME=/opt/jdk-25.0.1+8
+export PATH=$JAVA_HOME/bin:$PATH
+
+#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
+export SDKMAN_DIR="$HOME/.sdkman"
+[[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
