@@ -4,16 +4,14 @@
 // documentation: https://zed.dev/docs/configuring-zed
 //
 {
-	"features": {
-		"edit_prediction_provider": "none"
-	},
 	"edit_predictions": {
-		"disabled_globs": [".env"]
+		"provider": "none",
+  "disabled_globs": [".env"]
 	},
 	"theme": {
 		"mode": "dark",
 		"light": "One Light",
-		"dark": "One Dark"
+		"dark": "Vercel Dark"
 	},
 	"format_on_save": "on",
 	"hard_tabs": true,

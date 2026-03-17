@@ -367,6 +367,9 @@ export PATH="/home/aamir/.amp/bin:$PATH"
 export JAVA_HOME=/opt/jdk-25.0.1+8
 export PATH=$JAVA_HOME/bin:$PATH
 
+# Lazy git
+alias lg="lazygit"
+
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
 export SDKMAN_DIR="$HOME/.sdkman"
 [[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
