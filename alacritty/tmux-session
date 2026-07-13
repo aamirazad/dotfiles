@@ -1,0 +1,22 @@
+#!/bin/sh
+
+# Reuse the oldest detached session. If every session is currently attached,
+# create a new numbered one so separate Alacritty windows do not mirror it.
+detached_session=$(
+    tmux list-sessions -F '#{session_created}	#{session_attached}	#{session_name}' 2>/dev/null |
+        awk -F '\t' '$2 == 0 { print $1 "\t" $3 }' |
+        sort -n |
+        head -n 1 |
+        cut -f 2-
+)
+
+if [ -n "$detached_session" ]; then
+    exec tmux attach-session -t "$detached_session"
+fi
+
+next_session=$(
+    tmux list-sessions -F '#{session_name}' 2>/dev/null |
+        awk '/^[0-9]+$/ && $1 > highest { highest = $1 } END { print highest + 1 }'
+)
+
+exec tmux new-session -s "${next_session:-1}"

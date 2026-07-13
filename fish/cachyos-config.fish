@@ -1,5 +1,5 @@
 ﻿## Source from conf.d before our fish config
-source /usr/share/cachyos-fish-config/conf.d/done.fish
+source /home/aamir/.config/fish/conf.d/done.fish
 
 
 ## Set values
